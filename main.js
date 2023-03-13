@@ -1,63 +1,57 @@
 console.log('jis is wired!');
 
-let theButton = document.querySelector('button'),
-    theList = document.querySelector('ul')
+let theButtons = document.querySelectorAll('button'),
+    theList = document.querySelector('ul');
 
 //rules for working / creating objects
 
 // 1. needs a name, wrapped in curly bracktes
 // 2. commas between keys
 
-let coffeeCup = {
-    //descriptive keys : propeties 
-    color : "white", //String
-    lidColor : "grey", //String
-    height : 20, //String
-    contents : 'cappucino', //String
+let profs = {
+    marco : {
+        name: 'Marco',
+        role: 'Coordinator',
+        nickname: 'marco',
+        Bio: 'info',
+        avatar: 'marco.jpg'
+    },
 
-    // functional keys: methods (things an objetc can do)
-    drink : () => {
-        console.log('sippy sip')
-        console.log('i have sipped')
-    }, // use the braces if you have more than one action, if its just one you dont need them
-    mix : () => console.log('add cream, sugar, etc')
+    joe : {
+        name: 'joe',
+        role: 'Digital Media',
+        nickname: 'Teddy  bear',
+        Bio: 'joeinfo',
+        avatar: 'joe.jpg'
+    },
+
+    jhon : {
+        name: 'Jhon',
+        role: 'Motion',
+        nickname: 'Jhon',
+        Bio: 'jhoninfo',
+        avatar: 'jhon.jpg'
+    }
+
 } ;
 
 //functions go here
-function listProps() {
-    
-if (theList.children.length >0) { // if the lust is full so empty it
-    theList.innerHTML = "";
-    // exit the rest of the function
-    return;
-}
-
-    for (prop in coffeeCup){ //prop is short property
-        console.log(coffeeCup[prop]);
+function listProf() {
+   //empty the list
+        theList.innerHTML = "";
         
-        let newProp = document.createElement('li');
-        newProp.textContent = coffeeCup[prop];
-        newProp.classList.add('red-list');
+    
+    for (item in profs[this.dataset.prof]) {
+        let newItem = document.createElement('li');
 
-        theList.appendChild(newProp);
+        newItem.textContent = profs[this.dataset.prof][item];
+        theList.appendChild(newItem);
     }
+    
 }
 
 //add event handling here
-theButton.addEventListener('click', listProps);
+theButtons.forEach(profButton => profButton.addEventListener('click', listProf));
 
 
-
-//my example
-let mobilePhone = {
-    //descriptive keys : propeties 
-    color : "blue", //String
-    lidColor : "white", //String
-    height : 20, //String
-    contents : 'information', //String
-
-    // functional keys: methods (things an objetc can do)
-    call : () => {console.log('press phone')},
-    text : () => console.log('write a message')
-} ;
 
